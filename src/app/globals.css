@@ -5,3 +5,9 @@
   padding: 0;
   font-family: "Young Serif", serif;
 }
+
+.aboutItem:hover {
+  background-color: #e6fffb;
+  transform: scale(1.05);
+  transition: transform 0.6s;
+}
