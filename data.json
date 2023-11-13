@@ -1,6 +1,5 @@
 [
   {
-<<<<<<< HEAD
     "title": "wemen Saree",
     "isAvailable": false,
     "balance": "$1,39.00",
@@ -12,21 +11,6 @@
     "color": ["green", "black", "white"],
     "description": "Brand new and stylish collection which represent our country tradition and also going with the flow.",
     "review": ["very good", "we liked it"]
-=======
-    "_id": "653716a8d520281e2f6b406a",
-    "index": 0,
-    "isAvailable": false,
-    "balance": "$1,396.82",
-    "picture": "http://placehold.it/32x32",
-    "age": 26,
-    "eyeColor": "blue",
-    "name": "Moss Tanner",
-    "rating": 6,
-    "email": "mosstanner@nebulean.com",
-    "phone": "+1 (924) 576-3934",
-    "address": "322 Hancock Street, Bradenville, Vermont, 7611",
-    "description": "Proident voluptate adipisicing anim quis. Elit tempor eu esse qui quis consequat. Duis excepteur mollit sit laborum aliqua adipisicing enim. Ullamco culpa sit amet Lorem nostrud quis quis nostrud ex. Elit dolor duis ut amet magna in Lorem et non exercitation magna ut esse tempor.\r\n"
->>>>>>> 110ee705b12cb2f77d093503f63b00502d2e8175
   },
   {
     "_id": "653716a8de13746da409b3a5",

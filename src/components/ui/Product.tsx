@@ -17,11 +17,13 @@ export default function Product({ product }: { product: Iproduct }) {
           title={product.title}
           style={{ alignItems: "center", color: "#ad4e00" }}
         ></Meta>
-        <Image
-          src={product.picture}
-          alt="women picture"
-          style={{ objectFit: "fill", width: "100%", height: "70%" }}
-        />
+        <div style={{}}>
+          <Image
+            src={product.picture}
+            alt="women picture"
+            style={{ width: "100%", height: "70%" }}
+          />
+        </div>
         <p>Category: {product.category}</p>
         <p>{product.description}</p>
         <p>price: {product.balance}</p>

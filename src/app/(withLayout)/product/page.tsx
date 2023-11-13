@@ -1,10 +1,102 @@
+"use client";
 import AddToCart from "@/components/ui/AddToCart";
-import React from "react";
+import TableforProducts from "@/components/ui/Table";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { products } from "@/constants/products";
+import { useGetAllProductsQuery } from "@/redux/api/productApi";
+import { Button } from "antd";
+import React, { useState } from "react";
+import Column from "antd/es/table/Column";
+import Image from "next/image";
+export const columns = [
+  {
+    title: "Title",
+    dataIndex: "title",
+  },
+  {
+    title: "Balance",
+    dataIndex: "balance",
+  },
+  {
+    title: "Category",
+    dataIndex: "title",
+  },
+  {
+    title: "Picture",
+    dataIndex: "picture",
+  },
+  {
+    title: "Stock",
+    dataIndex: "stock",
+  },
+
+  {
+    title: "Action",
+
+    render: function (data: any) {
+      return (
+        <>
+          <Button type="primary">
+            {" "}
+            <ShoppingCartOutlined />
+          </Button>
+        </>
+      );
+    },
+  },
+];
 
 export default function Product() {
+  const query: Record<string, any> = {};
+  const [page, setPage] = useState<number>(1);
+  const [size, setSize] = useState<number>(5);
+  const [sortBy, setSortBy] = useState<string>("title");
+  const [sortOrder, setSortOrder] = useState<string>("Asc");
+  query["size"] = size;
+  query["page"] = page;
+  query["sortBy"] = sortBy;
+  query["sortOrder"] = sortOrder;
+  const onPaginationChange = (page: number, pageSize: number) => {
+    console.log("Page:", page, "PageSize:", pageSize);
+    setPage(page);
+    setSize(pageSize);
+  };
+  const onTableChange = (pagination: any, filter: any, sorter: any) => {
+    const { order, field } = sorter;
+    // console.log(order, field);
+    setSortBy(field as string);
+    setSortOrder(order === "ascend" ? "asc" : "desc");
+  };
+  const { data, isLoading } = useGetAllProductsQuery({ ...query });
+  console.log("data from product page:", data);
+  // @ts-ignore
+  const Products = data?.Products?.data;
+  const meta = data?.meta;
+  console.log("Products:", Products, meta);
   return (
     <div>
-      <AddToCart></AddToCart>
+      <TableforProducts
+        loading={isLoading}
+        columns={columns}
+        dataSource={Products}
+        pageSize={size}
+        totalPages={meta?.total}
+        showSizeChanger={true}
+        onPaginationChange={onPaginationChange}
+        onTableChange={onTableChange}
+        showPagination={true}
+      />
+      <Column
+        title="Picture"
+        dataIndex="picture"
+        render={(image) => (
+          <>
+            <Image src={image} alt="image" />
+          </>
+        )}
+      />
+
+      <AddToCart />
     </div>
   );
 }

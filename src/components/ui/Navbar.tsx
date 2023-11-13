@@ -4,10 +4,7 @@ import {
   AppstoreOutlined,
   MailOutlined,
   SettingOutlined,
-<<<<<<< HEAD
   UserOutlined,
-=======
->>>>>>> 110ee705b12cb2f77d093503f63b00502d2e8175
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
@@ -91,14 +88,10 @@ const Navbar = () => {
             removeUserFromStore();
             router.push("/login");
           }}
-<<<<<<< HEAD
           style={{ marginRight: 0, marginLeft: "auto" }}
         >
           <UserOutlined />
-=======
-        >
           logOut
->>>>>>> 110ee705b12cb2f77d093503f63b00502d2e8175
         </Button>
       ),
     },
