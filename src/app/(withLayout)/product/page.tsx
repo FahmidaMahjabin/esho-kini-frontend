@@ -56,10 +56,12 @@ export default function Product() {
   const [size, setSize] = useState<number>(5);
   const [sortBy, setSortBy] = useState<string>("title");
   const [sortOrder, setSortOrder] = useState<string>("Asc");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   query["size"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
+  query["searchTerm"] = searchTerm;
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
@@ -77,7 +79,9 @@ export default function Product() {
   const Products = data?.Products?.data;
   const meta = data?.meta;
   console.log("Products:", Products, meta);
-  const handleChange = () => {};
+  const handleChange = (value: string) => {
+    console.log();
+  };
   // const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
   return (
     <div>
@@ -94,12 +98,17 @@ export default function Product() {
               { value: "jack", label: "Jack" },
               { value: "lucy", label: "Lucy" },
               { value: "Yiminghe", label: "yiminghe" },
-              { value: "disabled", label: "Disabled", disabled: true },
             ]}
           />
         </div>
         <div>
-          <Search placeholder="input search text" enterButton />
+          <Search
+            placeholder="input search text"
+            enterButton
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
         </div>
       </Flex>
       <TableforProducts
