@@ -1,4 +1,4 @@
-import girl1 from "@/assets/images/girl-1.jpg";
+import girl1 from "../assets/images/girl-1.jpg";
 import girl2 from "@/assets/images/girl-2.jpg";
 import girl3 from "@/assets/images/girl-3.jpg";
 import boy1 from "@/assets/images/man-1.jpg";

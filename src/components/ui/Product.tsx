@@ -21,6 +21,8 @@ export default function Product({ product }: { product: Iproduct }) {
           <Image
             src={product.picture}
             alt="women picture"
+            width={500}
+            height={500}
             style={{ width: "100%", height: "70%" }}
           />
         </div>

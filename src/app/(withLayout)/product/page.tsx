@@ -4,10 +4,14 @@ import TableforProducts from "@/components/ui/Table";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { products } from "@/constants/products";
 import { useGetAllProductsQuery } from "@/redux/api/productApi";
-import { Button } from "antd";
+import { Button, Flex, Select } from "antd";
 import React, { useState } from "react";
 import Column from "antd/es/table/Column";
 import Image from "next/image";
+
+import { Input, Space } from "antd";
+
+const { Search } = Input;
 export const columns = [
   {
     title: "Title",
@@ -73,8 +77,31 @@ export default function Product() {
   const Products = data?.Products?.data;
   const meta = data?.meta;
   console.log("Products:", Products, meta);
+  const handleChange = () => {};
+  // const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
   return (
     <div>
+      <h1>Choose your best attire</h1>
+      <Flex justify="space-between">
+        <div>
+          <label>Select Category</label>
+          <br></br>
+          <Select
+            defaultValue="lucy"
+            style={{ width: 120 }}
+            onChange={handleChange}
+            options={[
+              { value: "jack", label: "Jack" },
+              { value: "lucy", label: "Lucy" },
+              { value: "Yiminghe", label: "yiminghe" },
+              { value: "disabled", label: "Disabled", disabled: true },
+            ]}
+          />
+        </div>
+        <div>
+          <Search placeholder="input search text" enterButton />
+        </div>
+      </Flex>
       <TableforProducts
         loading={isLoading}
         columns={columns}

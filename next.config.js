@@ -1,14 +1,11 @@
+const { Domain } = require("domain");
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-module.exports = {
+const nextConfig = {
+  reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: ["placehold.it", "storyset.com"],
-        port: "",
-      },
-    ],
+    domains: ["ibb.co"],
   },
 };
+
 module.exports = nextConfig;
