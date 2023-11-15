@@ -8,9 +8,11 @@ import { Button, Flex, Select } from "antd";
 import React, { useState } from "react";
 import Column from "antd/es/table/Column";
 import Image from "next/image";
-
-import { Input, Space } from "antd";
-
+import { useDebounce } from "@uidotdev/usehooks";
+import { Input } from "antd";
+import { useDebounced } from "@/redux/hooks";
+import FormSelectInput, { IOption } from "@/components/form/FormSelectInput";
+import { Iproduct } from "@/interfaces/commonType";
 const { Search } = Input;
 export const columns = [
   {
@@ -57,11 +59,21 @@ export default function Product() {
   const [sortBy, setSortBy] = useState<string>("title");
   const [sortOrder, setSortOrder] = useState<string>("Asc");
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [category, setCategory] = useState<string>("Women Collection");
   query["size"] = size;
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
   query["searchTerm"] = searchTerm;
+  query["category"] = category;
+  const debouncedTerm = useDebounced({
+    searchQuery: searchTerm,
+    delay: 600,
+  });
+
+  if (!!debouncedTerm) {
+    query["searchTerm"] = debouncedTerm;
+  }
   const onPaginationChange = (page: number, pageSize: number) => {
     console.log("Page:", page, "PageSize:", pageSize);
     setPage(page);
@@ -79,10 +91,27 @@ export default function Product() {
   const Products = data?.Products?.data;
   const meta = data?.meta;
   console.log("Products:", Products, meta);
-  const handleChange = (value: string) => {
-    console.log();
-  };
+
   // const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
+  const categoryOptions: IOption[] = [
+    { label: "wemen collection", value: "Women Collection" },
+    { label: "men collection", value: "Men Collection" },
+  ];
+  // Products?.map((product: Iproduct) =>
+  // if (!categoryOptions.includes(product.category) ){
+  //   categoryOptions.push({
+  //     label: product.category,
+  //     value: product.category,
+  //   })
+
+  // }
+
+  // );
+
+  const handleChange = (value: string) => {
+    setCategory(value);
+    console.log("category:", category);
+  };
   return (
     <div>
       <h1>Choose your best attire</h1>
@@ -91,14 +120,10 @@ export default function Product() {
           <label>Select Category</label>
           <br></br>
           <Select
-            defaultValue="lucy"
+            defaultValue="Women Collection"
             style={{ width: 120 }}
             onChange={handleChange}
-            options={[
-              { value: "jack", label: "Jack" },
-              { value: "lucy", label: "Lucy" },
-              { value: "Yiminghe", label: "yiminghe" },
-            ]}
+            options={categoryOptions}
           />
         </div>
         <div>
@@ -107,6 +132,7 @@ export default function Product() {
             enterButton
             onChange={(e) => {
               setSearchTerm(e.target.value);
+              console.log("searchterm:", searchTerm);
             }}
           />
         </div>

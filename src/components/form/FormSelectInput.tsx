@@ -14,6 +14,7 @@ type IInput = {
   id?: string;
   size?: "large" | "small";
   options: IOption[];
+
   label?: string;
   placeholder?: string;
 };
