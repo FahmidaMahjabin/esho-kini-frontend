@@ -12,6 +12,7 @@ import { Button, Input, Tooltip, Flex } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { removeUserFromStore } from "@/service/auth.service";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Navbar = () => {
   const items: MenuProps["items"] = [
@@ -32,40 +33,20 @@ const Navbar = () => {
       children: [
         {
           type: "group",
-          label: "Item 1",
-          children: [
-            {
-              label: "Option 1",
-              key: "setting:1",
-            },
-            {
-              label: "Option 2",
-              key: "setting:2",
-            },
-          ],
+          label: <Link href="/product">Women Collection</Link>,
         },
         {
           type: "group",
-          label: "Item 2",
-          children: [
-            {
-              label: "Option 3",
-              key: "setting:3",
-            },
-            {
-              label: "Option 4",
-              key: "setting:4",
-            },
-          ],
+          label: <Link href="/product">Men Collection</Link>,
+        },
+        {
+          type: "group",
+          label: <Link href="/product">Baby Collection</Link>,
         },
       ],
     },
     {
-      label: (
-        <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-          Navigation Four - Link
-        </a>
-      ),
+      label: <Link href="/profile">Profile</Link>,
       key: "alipay",
     },
     {

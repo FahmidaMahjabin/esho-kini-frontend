@@ -4,7 +4,7 @@ const { Domain } = require("domain");
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["ibb.co"],
+    domains: ["ibb.co", "plus.unsplash.com"],
   },
 };
 

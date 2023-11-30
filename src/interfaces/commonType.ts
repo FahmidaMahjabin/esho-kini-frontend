@@ -29,11 +29,11 @@ export type IReview = {
   __v: number;
 };
 export type Iproduct = {
-  // _id: string;
+  id: number;
   title: string;
   category: string;
   description: string;
-  picture: StaticImageData;
+  picture: string;
   balance: number;
   review?: string[];
   rating: number;

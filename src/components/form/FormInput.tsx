@@ -1,5 +1,5 @@
 "use client";
-import { getErrorMessagesByPropertyName } from "@/app/utiles/validate-schema";
+import { getErrorMessageByPropertyName } from "@/utiles/validate-schema";
 import { Input } from "antd";
 import { valueType } from "antd/es/statistic/utils";
 import React from "react";
@@ -28,7 +28,7 @@ export default function FormInput({
     control,
     formState: { errors },
   } = useFormContext();
-  const errorMessage = getErrorMessagesByPropertyName(errors, name);
+  const errorMessage = getErrorMessageByPropertyName(errors, name);
   return (
     <>
       <div>{label ? label : null}</div>

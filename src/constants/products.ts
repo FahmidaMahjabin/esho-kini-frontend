@@ -11,6 +11,7 @@ import pregnancy from "@/assets/images/pregnancy.jpg";
 import { Iproduct } from "@/interfaces/commonType";
 export const products: Iproduct[] = [
   {
+    id: 1,
     title: "wemen Saree",
     isAvailable: true,
     balance: 140.23,
@@ -25,6 +26,7 @@ export const products: Iproduct[] = [
     review: ["very good", "we liked it"],
   },
   {
+    id: 2,
     title: "wemen Saree",
     isAvailable: true,
     balance: 140.23,
@@ -39,6 +41,7 @@ export const products: Iproduct[] = [
     review: ["very good", "we liked it"],
   },
   {
+    id: 3,
     title: "wemen Saree",
     isAvailable: true,
     balance: 140.23,
@@ -53,6 +56,7 @@ export const products: Iproduct[] = [
     review: ["very good", "we liked it"],
   },
   {
+    id: 4,
     title: "Men Suit",
     isAvailable: true,
     balance: 140.23,
@@ -67,6 +71,7 @@ export const products: Iproduct[] = [
     review: ["very good", "we liked it"],
   },
   {
+    id: 5,
     title: "Boy Suit",
     isAvailable: true,
     balance: 140.23,
@@ -81,6 +86,7 @@ export const products: Iproduct[] = [
     review: ["very good", "we liked it"],
   },
   {
+    id: 6,
     title: "Bag Collection",
     isAvailable: true,
     balance: 140.23,
@@ -95,6 +101,7 @@ export const products: Iproduct[] = [
     review: ["very good", "we liked it"],
   },
   {
+    id: 7,
     title: "kid collection",
     isAvailable: true,
     balance: 140.23,
@@ -109,6 +116,7 @@ export const products: Iproduct[] = [
     review: ["very good", "we liked it"],
   },
   {
+    id: 8,
     title: "kid collection",
     isAvailable: true,
     balance: 140.23,
