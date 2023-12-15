@@ -4,7 +4,7 @@ import Form from "@/components/form/Form";
 import FormInput from "@/components/form/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import { useLoginMutation, useSignupMutation } from "@/redux/api/authApi";
-import { storeUserInfo } from "@/service/service.store";
+import { setToLoaclStorage, storeUserInfo } from "@/service/service.store";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/schemas/loginSchema";
@@ -25,8 +25,11 @@ const SignupPage = () => {
     try {
       console.log("data from signup submit:", data);
       const res = await signup({ ...data, role: "user" }).unwrap();
+      console.log("res from signup:", res);
       if (res) {
+        // setToLoaclStorage()
         router.push("/login");
+
         message.success("User created  successfully!");
       }
       console.log(res);
